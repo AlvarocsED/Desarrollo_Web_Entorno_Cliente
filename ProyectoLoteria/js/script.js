@@ -1,6 +1,6 @@
 window.onload = inicio;
 
-const NUM_COLUMNAS = 3;
+const NUM_COLUMNAS = 6;
 const NUM_CAJAS = 50;
 const CAJAS_SORTEO = 6;
 let vectorCajas = [];
