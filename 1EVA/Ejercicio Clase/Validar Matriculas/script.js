@@ -2,6 +2,19 @@ window.onload = inicio;
 
 let bool = true;
 
+let ciclo = document.querySelector("input[name=radio]").value;
+let modulos = document.querySelectorAll("input[name=modulos]");
+
+let marcados = [];
+
+let nomb = document.getElementById("nombre").value;
+let curso = document.getElementById("selectCurso").value;
+let horas = document.querySelectorAll("select[name=multipleselect]");
+console.log(horas);
+let horasMarcadas = [];
+let comentario = document.getElementById("exampleFormControlTextarea1").value;
+
+
 function inicio() {
   console.log("entro en inicio");
   let btnAceptar = document.getElementById("aceptar");
@@ -18,7 +31,7 @@ function inicio() {
     let smHo = document.getElementById("smHoras");
 
 
-    if(ciclo==null && modulos==null && curso==null && nombre == null && horas == null){
+    if(ciclo=="" || modulos=="" || curso=="" || nomb == "" || horas == ""){
       bool=false;
       smCi.innerHTML="*Campo Obligatorio";
       smMo.innerHTML="*Campo Obligatorio";
@@ -26,16 +39,14 @@ function inicio() {
       smNo.innerHTML="*Campo Obligatorio";
       smHo.innerHTML="*Campo Obligatorio";
     }
+  return bool;
   }
 }
 
 function obtenerDatos() {
   console.log("entro en obtenerDatos");
 
-  let ciclo = document.querySelector("input[name=radio]").value;
-  let modulos = document.querySelectorAll("input[name=modulos]");
 
-  let marcados = [];
 
   modulos.forEach(obtenerMarcados);
 
@@ -45,11 +56,7 @@ function obtenerDatos() {
     }
   }
 
-  let nombre = document.getElementById("nombre").value;
-  let curso = document.getElementById("selectCurso").value;
-  let horas = document.querySelectorAll("select[name=multipleselect]");
-  console.log(horas);
-  let horasMarcadas = [];
+
 
   for (let index = 0; index < horas[0].length; index++) {
     if (horas[0][index].selected) {
@@ -57,7 +64,6 @@ function obtenerDatos() {
     }
   }
 
-  let comentario = document.getElementById("exampleFormControlTextarea1").value;
 
   let mensaje =
     "Ciclo: " +
@@ -65,13 +71,11 @@ function obtenerDatos() {
     "\nModulos: " +
     marcados +
     "\nNombre: " +
-    nombre +
+    nomb +
     "\nCurso: " +
     curso +
     "\nHoras asistidas: " +
     horasMarcadas +
     "\nComentario: " +
     comentario;
-
-  alert(mensaje);
 }
