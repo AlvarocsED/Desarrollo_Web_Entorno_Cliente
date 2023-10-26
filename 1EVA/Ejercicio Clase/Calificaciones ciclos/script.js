@@ -41,8 +41,8 @@ function inicio(){
             let cadena=String(expediente);
             if(cadena.length!=6){
                 bool=false;
-                smExpediente.innerHTML="* Cadena no puede superar los 6 caracteres";
-            }else{
+                smExpediente.innerHTML="* Cadena debe de tener 6 caracteres";
+            }else {
             for(let i; i<cadena.length-1; i++){
                 let caracter=cadena.charAt(i);
                 if(isNaN(caracter)){
@@ -51,14 +51,30 @@ function inicio(){
                 }
             }
             let caracter=cadena.charAt(cadena.length-1);
-            if(!/[A-Z]/.test(caracter)){
+            if(!/[A-Z]/.test(caracter) && bool!=false){
                 console.log(caracter);
                 smExpediente.innerHTML="* Último carácter letra mayúscula";
                 bool=false;
             }
-            if(dwec<1 || dwec>10){
+            if(dwec<1 || dwec>10 && bool!=false){
                 bool=false;
                 smDwec.innerHTML="* No cumple con el rango";
+            }
+            if(dwes<0 || dwes>10 && bool!=false){
+                bool=false;
+                smDwes.innerHTML="* No cumple con el rango";
+            }
+            if(ds<0 || ds>10 && bool!=false){
+                bool=false;
+                smDs.innerHTML="* No cumple con el rango";
+            }
+            if(eie<0 || eie>10 && bool!=false){
+                bool=false;
+                smEie.innerHTML="* No cumple con el rango";
+            }
+            if(diw<0 || diw>10 && bool!=false){
+                bool=false;
+                smDiw.innerHTML="* No cumple con el rango";
             }
         }
             
