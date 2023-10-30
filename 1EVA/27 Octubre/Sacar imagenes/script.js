@@ -28,6 +28,6 @@ function mostrar(){
         } 
     }
     //PRIMERO HAY QUE HACER LA PETICIÓN
-    xhr.open("GET","http://camacho.atwebpages.com/webcam/getWebcam.php",true);
+    xhr.open("GET","getWebcam.php.json",true);
     xhr.send();
 }
