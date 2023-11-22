@@ -12,10 +12,10 @@ function cargarTabla(){
   console.log("entro en cargarTabla")
    
  bloqueHtml.innerHTML="<div class='row'>"+
- "<div class='col-lg-2 text-center' >DNI</div>"+
+ "<div class='col-lg-2 text-center' >ID</div>"+
  "<div class='col-lg-2 text-center' >NOMBRE</div>"+
- "<div class='col-lg-2 text-center' >APELLIDO</div>"+
- "<div class='col-lg-2 text-center' >TELEFONO</div>"+
+ "<div class='col-lg-2 text-center' >PRECIO</div>"+
+ "<div class='col-lg-2 text-center' >FOTO</div>"+
  "<div class='col-lg-2 text-center' >ELIMINAR</div>"+
  "<div class='col-lg-2 text-center' >MODIFICAR</div></div>";
  var xhr=new XMLHttpRequest();
@@ -30,19 +30,19 @@ function cargarTabla(){
       
        objeto.forEach(recorrer);
      
-       function recorrer(clientes,index){
-        console.log("vector"+clientes.dni);
-        let vector=[clientes.dni,clientes.nombre,clientes.apellido,clientes.telefono];
+       function recorrer(fruta,index){
+        console.log("vector"+fruta.id);
+        let vector=[fruta.id,fruta.name,fruta.price,fruta.photo];
          bloqueHtml.innerHTML+="<div class='row'> "+
-         "<div class='col-lg-2 text-center'>"+clientes.dni+"</div>"+
-         "<div class='col-lg-2 text-center'>"+clientes.nombre+"</div>"+
-         "<div class='col-lg-2 text-center'>"+clientes.apellido+"</div>"+
-         "<div class='col-lg-2 text-center'>"+clientes.telefono+"</div>"+
+         "<div class='col-lg-2 text-center'>"+fruta.id+"</div>"+
+         "<div class='col-lg-2 text-center'>"+fruta.name+"</div>"+
+         "<div class='col-lg-2 text-center'>"+fruta.price+"</div>"+
+         "<img src='"+fruta.photo+"' width='80px'>"+
          //simular botón con a href añado clase btn btn-danger (color rojo)
          "<div class='col-lg-2 text-center mb-2'><a class='btn btn-danger btn-md'"+
          //anulo el href, no hay link , pero sí hay evento onclick con 
          //parámetro incluido: dni de esa tupla
-         " href='javascript:void(0)' onclick=eliminar(\'"+clientes.dni+"\')>"+
+         " href='javascript:void(0)' onclick=eliminar(\'"+fruta.id+"\')>"+
          //texto del botón e icono
          "ELIMINAR<i class='bi-trash'></i></a></div> "+
          //td del modificar
@@ -53,7 +53,7 @@ function cargarTabla(){
        }
      } 
       //PRIMERO HAY QUE HACER LA PETICIÓN
- xhr.open("GET"," http://moralo.atwebpages.com/menuAjax/clientes/getClientes.php",true);
+ xhr.open("GET"," http://moralo.atwebpages.com/menuAjax/productos/index.php",true);
  xhr.send();
   
  tabla.appendChild(bloqueHtml);
@@ -62,39 +62,39 @@ function cargarTabla(){
 
 function insertarUsuario(){
     console.log("entro en insertar");
-    let dniTxt=document.querySelector("#txtDni").value;
+    let idTxt=document.querySelector("#txtId").value;
     let nombreTxt=document.querySelector("#txtNombre").value;
-    let apellidoTxt=document.querySelector("#txtApellido").value;
-    let telefonoTxt=document.querySelector("#txtTelefono").value;
-    console.log("insertando: "+dniTxt)
+    let precioTxt=document.querySelector("#txtPrecio").value;
+    let fotoTxt=document.querySelector("#txtFoto").value;
+    console.log("insertando: "+idTxt)
     $.ajax({
-        url:"http://moralo.atwebpages.com/menuAjax/clientes/insertarClientes.php",
+        url:"http://moralo.atwebpages.com/menuAjax/productos/create_product.php",
         type:"POST",
         data:{
 // sintaxis: variablePHP : variableJs
-           dni:dniTxt,
-           nombre:nombreTxt,
-           apellido:apellidoTxt,
-           telefono:telefonoTxt
+           id:idTxt,
+           name:nombreTxt,
+           price:precioTxt,
+           photo:fotoTxt
         },
         dataType:"JSON"
     });
     location.reload();
 
 }
-function eliminar(dni){
-    console.log("entro en eliminar "+dni);
-    let respuesta=confirm("¿Estás seguro de querer eliminar "+dni+"?");
+function eliminar(id){
+    console.log("entro en eliminar "+id);
+    let respuesta=confirm("¿Estás seguro de querer eliminar "+id+"?");
     //cargar el método AJAX que ejecuta el servicio eliminar.php
     if (respuesta){
    
     $.ajax({
       //url del servicio
-      url:"http://moralo.atwebpages.com/menuAjax/clientes/eliminarClientes.php",
+      url:"http://moralo.atwebpages.com/menuAjax/productos/delete_product.php",
       //method
       type:"POST",
       data:{
-        dni:dni
+        id:id
       },
       dataType:"JSON"
 
@@ -106,12 +106,12 @@ function modificar(vector){
  console.log("entro en modificar "+vector)
  let cadena=String(vector);
  let deserializar=cadena.split(",");
- document.querySelector("#txtDni").value=deserializar[0];
- document.querySelector("#txtDni").setAttribute("disabled",true);
+ document.querySelector("#txtId").value=deserializar[0];
+ document.querySelector("#txtId").setAttribute("disabled",true);
  document.querySelector("#txtNombre").value=deserializar[1];
- document.querySelector("#txtApellido").value=deserializar[2];
- document.querySelector("#txtTelefono").value=deserializar[3];
- console.log("dni :"+deserializar[0]);
+ document.querySelector("#txtPrecio").value=deserializar[2];
+ document.querySelector("#txtFoto").value=deserializar[3];
+ console.log("id :"+deserializar[0]);
  document.querySelector("#btnInsertar").disabled=true;
 
  document.querySelector("#btnModificar").disabled=false;
