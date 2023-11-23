@@ -141,7 +141,7 @@ function anadirCesta(vector) {
       "ELIMINAR<i class='bi-trash'></i></a></div> " +
       "</td>";
 
- 
+ 0
   }
   contenedorCesta.appendChild(cajaTr);
 }
@@ -164,10 +164,4 @@ function eliminar(fila, id, calculo, peso) {
     dataType:"JSON"
   });
 
-}
-
-function login() {
-  if (pwd.value == "frutas") {
-    window.open("http://127.0.0.1:5500/Crud_Back/index.html");
-  }
 }
