@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- visor:string="";
+  visor:string="";
  operador:number=0;
  guardar:number=0;
  arrastra:boolean=false;
@@ -33,6 +33,12 @@ export class AppComponent {
         }
         case "-2":{
           //multiplicar
+          if (this.arrastra) {
+            this.visor=String(this.guardar*Number(this.visor));
+            this.guardar=0;
+          }
+          this.arrastra=false;
+          this.operador=-2;
           break;
         }
         case "-3":{
@@ -55,6 +61,9 @@ export class AppComponent {
         }
         case "-4":{
           //decimal
+          if (this.visor.includes('.')) {
+            this.visor+='.';
+          }
           break;
         }
 
@@ -68,6 +77,15 @@ export class AppComponent {
         }
         case "-6":{
           //restrar
+          if (this.arrastra) {
+            this.visor=String(this.guardar-Number(this.visor));
+            this.guardar=0;
+          }else{
+            this.guardar=Number(this.visor);
+            this.visor="";
+            this.arrastra=true;
+          }
+          this.operador=-6;
           break;
         }
         case "-7":{
@@ -80,6 +98,7 @@ export class AppComponent {
         }
         case "-8":{
           //eliminar el visor
+          this.visor="";
           break;
         }
 
@@ -88,5 +107,4 @@ export class AppComponent {
      }
    }
   }
-
 
