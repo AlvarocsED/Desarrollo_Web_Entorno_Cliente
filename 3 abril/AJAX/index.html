@@ -21,57 +21,78 @@
 
     <body>
         <div class="container-xl">
+            <form action="" method="get" id="cargar">
             <div class="row">
                 <div class="col-lg-4">
                     <h1>¿Qué ciclo estas cursando?</h1>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="" id="" />
-            <label class="form-check-label" for=""> DAM </label>
+            <input class="form-check-input" type="radio" name="ciclos" id="DAM"  value="SIN"/>
+            <label class="form-check-label" for="DAM"> DAM </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="" id="" />
-            <label class="form-check-label" for=""> DAW </label>
+            <input class="form-check-input" type="radio" name="ciclos" id="DAW" value="DAW" />
+            <label class="form-check-label" for="DAW"> DAW </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="" id="" />
-            <label class="form-check-label" for=""> ASIR </label>
+            <input class="form-check-input" type="radio" name="ciclos" id="ciclo3" value="ASIR"/>
+            <label class="form-check-label" for="ASIR"> ASIR </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="" id="" />
-            <label class="form-check-label" for=""> SMR </label>
+            <input class="form-check-input" type="radio" name="ciclos" id="ciclo4" value="SMR"/>
+            <label class="form-check-label" for="SMR"> SMR </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="" id="" />
-            <label class="form-check-label" for=""> ASIR </label>
+            <input class="form-check-input" type="radio" name="ciclos" id="ciclo5" value="FPB"/>
+            <label class="form-check-label" for="FPB"> FPB </label>
         </div>
     </div>
     <div class="col-lg-4">
         <h1>Módulos</h1>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="" />
+            <input class="form-check-input" type="checkbox" name="modulos" value="diw" id="modulo1" />
             <label class="form-check-label" for=""> Diseño de Interfaces Web </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="" />
+            <input class="form-check-input" type="checkbox" name="modulos" value="dwec" id="modulo2" />
             <label class="form-check-label" for=""> Desarrollo Entorno Cliente </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="" />
+            <input class="form-check-input" type="checkbox" name="modulos" value="des" id="modulo3" />
             <label class="form-check-label" for=""> Desarrollo Entorno Servidor </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="" />
-            <label class="form-check-label" for=""> Desarrollo Interfaces Multiplataforma </label>
+            <input class="form-check-input" type="checkbox" name="modulos" value="dim" id="modulo4" />
+            <label class="form-check-label" for="DIM"> Desarrollo Interfaces Multiplataforma </label>
         </div>
+        <br>
+        <br>
+            <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" id="aceptar">Aceptar</button>
+    </div>
     </div>
     <div class="col-lg-4">
         <h1>Curso</h1>
-            <select class="form-select">
-                <!-- <option value="1">Primero</option>
-                <option value="2">Segundo</option> -->
+            <select class="form-select" id="curso">
+                <option selected></option>
+                <option value="1">Primero</option>
+                <option value="2">Segundo</option>
   </select>
+    <h1>Nombre</h1>
+    <div class="mb-3">
+        <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            id="nom"
+            aria-describedby="helpId"
+            placeholder=""
+        />
     </div>
+    </div>
+
+    
 </div>
+</form>
 </div>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -84,5 +105,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="ejajax..js"></script>
+
     </body>
 </html>
