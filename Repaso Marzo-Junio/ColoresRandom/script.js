@@ -16,7 +16,9 @@ function inicio(){
             segundos--;
             if (segundos==0){
                 clearInterval(time);
-                btnJugar.setAttribute("disabled",false);
+                btnJugar.disabled=false;
+                segundos=30;
+                
             }
             tiempo.innerHTML=segundos;
             let nNombresRandom=Math.round(Math.random() *3);
