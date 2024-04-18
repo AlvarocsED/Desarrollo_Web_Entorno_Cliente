@@ -20,14 +20,19 @@ function mostrar(){
                     idColumna.textContent = imagen.id;
                     fila.appendChild(idColumna);
 
-                    const nombreColumna = document.createElement('td');
-                    nombreColumna.textContent = imagen.nombre;
-                    fila.appendChild(nombreColumna);
+                    const imgColumna = document.createElement('td');
+                    imgColumna.innerHTML ="<img src='"imagen.imagen +"'width=200 height=400";
+                    fila.appendChild(imgColumna);
 
-                    const urlColumna = document.createElement('td');        
-                    urlColumna.textContent = imagen.url;
-                    fila.appendChild(urlColumna);
+                    const textoColumna = document.createElement('td');        
+                    textoColumna.textContent = imagen.texto;
+                    fila.appendChild(textoColumna);
+
+                    const subtextoColumna = document.createElement('td');        
+                    subtextoColumna.textContent = imagen.subtexto;
+                    fila.appendChild(subtextoColumna);
                     
+
 
                     // Añadimos la fila a la tabla
                     tabla.appendChild(fila);
