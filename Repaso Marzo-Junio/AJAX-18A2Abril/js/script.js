@@ -21,7 +21,11 @@ function mostrar(){
                     fila.appendChild(idColumna);
 
                     const imgColumna = document.createElement('td');
-                    imgColumna.innerHTML ="<img src='"imagen.imagen +"'width=200 height=400";
+                    const Tagimg=document.createElement("img");
+                    Tagimg.setAttribute("src",imagen.imagen);
+                    Tagimg.className="card img";
+                    imgColumna.appendChild(Tagimg);
+                    fila.appendChild(imgColumna);
                     fila.appendChild(imgColumna);
 
                     const textoColumna = document.createElement('td');        
