@@ -3,6 +3,7 @@ function inicio(){
     let btn1=document.getElementById("avanzar");
     let btn2=document.getElementById("avanzar2");
     let btn3=document.getElementById("avanzar3");
+    let btn4=document.getElementById("reverse");
     let principal=document.querySelector("body");
     const componentes=[];
     var i=0;
@@ -10,6 +11,7 @@ function inicio(){
     btn1.onclick=todorojo;
     btn2.onclick=rojoTemp;
     btn3.onclick=rojoAlterno;
+    btn4.onclick=juegoReverso;
     function crearDivs(){
         cajaP=document.createElement("div");
         cajaP.className="container";
@@ -66,4 +68,16 @@ function inicio(){
                 
             }
     }
+    function juegoReverso(){
+        let intervalo=setInterval(cambio, 500);
+        function cambio(){
+        if (i==componentes.length) {
+            componentes[i].style.backgroundColor="red";
+        }
+        if (i<componentes.length) {
+            componentes[i-1].style.backgroundColor="green";
+        }
+    }
+    i--;
+}
 }
