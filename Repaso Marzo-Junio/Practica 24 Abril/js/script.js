@@ -7,6 +7,7 @@ function inicio(){
     let principal=document.querySelector("body");
     const componentes=[];
     var i=0;
+    
     crearDivs();
     btn1.onclick=todorojo;
     btn2.onclick=rojoTemp;
@@ -69,15 +70,29 @@ function inicio(){
             }
     }
     function juegoReverso(){
+        var j=componentes.length-1;
         let intervalo=setInterval(cambio, 500);
         function cambio(){
-        if (i==componentes.length) {
-            componentes[i].style.backgroundColor="red";
+        
+            componentes[j].style.backgroundColor="red";
+            if (j<componentes.length-1) {
+            componentes[j+1].style.backgroundColor="green";
+            
+
+            
         }
-        if (i<componentes.length) {
-            componentes[i-1].style.backgroundColor="green";
+        if (j==componentes.length-1) {    
+            componentes[0].style.backgroundColor="green";
         }
+        if (j==0) {
+            j=componentes.length-1;
+            componentes[j].style.backgroundColor="red";
+            
+        }else{
+            j--;
+        }
+        
     }
-    i--;
+    
 }
 }
